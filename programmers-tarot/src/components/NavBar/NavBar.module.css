@@ -1,0 +1,15 @@
+.navigationContainer {
+    background-color: rgb(119, 50, 116);
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mainMenu{
+    display: flex;
+    gap: 5rem;
+}
+.mainMenu li{
+    list-style-type: none;
+}
