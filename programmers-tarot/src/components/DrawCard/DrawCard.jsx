@@ -114,6 +114,7 @@ const DrawCard = () => {
   </div>
 )}
     </div>
+    <hr className={styles.hrSolid}></hr>
     </div>
   );
 };
