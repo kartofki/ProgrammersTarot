@@ -27,19 +27,34 @@ const DrawCard = () => {
     }, 600); 
   };
 
+  // handle card reset (flip back to face down)
+  const handleResetCard = () => {
+    setIsFlipping(true);
+    setTimeout(() => {
+      // clear card after half the animation
+      setCurrentCard(null);
+    }, 300);
+
+    setTimeout(() => {
+      // full animation
+      setIsFlipping(false);
+    }, 600);
+  };
+
   return (
     <div className={styles.drawCardContainer}>
         {/* Heading */}
       <h2>Draw A Card</h2>
       <p>
-        🔮 Welcome to Programmer Tarot, where coding meets the ancient cosmic wisdom of Tarot! 🔮
+        🔮 Welcome to Programmer's Tarot, where coding meets the ancient cosmic wisdom of Tarot! 🔮
         <br />
         <br />
-        Draw a card, and let the universe guide your next commit, whether it's squashing bugs,
-        surviving sprint reviews, or unlocking the mysteries of "works on my machine." Whether
+        Draw a card, and let the universe guide your next commit, whether it's fixing bugs,
+        surviving sprints, or unlocking the mysteries of "works on my machine." Whether
         you're chasing bugs or wondering if your code will finally compile, trust the tarot for
         some cosmic advice. May your debugger be ever in your favor! 🌟
       </p>
+      <hr className={styles.hrSolid}></hr>
       <div className={styles.cardAndDescription}>
       {/* Card And Button Container */}
       <div className={styles.cardAndButton}>
@@ -55,19 +70,49 @@ const DrawCard = () => {
         </div>
       </div>
 
-      <button onClick={handleDrawCard}>
+      <button className={styles.button} onClick={handleDrawCard}>
         {currentCard ? 'Draw New Card' : 'Draw a Card'}
       </button>
-      </div>
+      {/* Reset button */}
+       {currentCard ? (
+    <button 
+      onClick={handleResetCard}
+      type="button"
+      className={styles.button}
+    >
+      Reset
+    </button>
+  ) : (
+    // Invisible placeholder
+    <button 
+      type="button"
+      className={styles.button}
+      style={{ visibility: 'hidden' }}
+      tabIndex={-1}
+      aria-hidden="true"
+    >
+      Reset
+    </button>
+  )}
+</div>
       {currentCard ? (
-        <div className={styles.cardDisplay}>
-          <h2>Name: {currentCard.name}</h2>
-          <h2>Description: {currentCard.description}</h2>
-        </div>
-      ) : (<div className={styles.cardDisplay}>
-        <h2>Name: </h2>
-        <h2>Description:</h2>
-      </div>)}
+  <div className={styles.cardDisplay}>
+    
+    <div className={styles.cardDescriptionWrapper}>
+      
+      <div className={styles.cardDescription}><h2></h2><h2 className={styles.cardName}>
+  <span style={{ color: "#333", fontWeight: "normal" }}>Your Card:</span> {currentCard.name}
+</h2>
+    <span style={{ color: "#333", fontWeight: "normal" }}>Description:</span> {currentCard.description}</div>
+    </div>
+  </div>
+) : (
+  <div className={styles.cardDisplay}>
+    <div className={styles.placeholder}>
+    <h2>Press the button to draw a card </h2>
+    </div>
+  </div>
+)}
     </div>
     </div>
   );

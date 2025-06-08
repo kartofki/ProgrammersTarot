@@ -1,0 +1,18 @@
+.appFooter {
+  margin-top:3.5rem;         
+  padding: 0.3rem 0;         
+  text-align: center;
+  font-size: 0.76rem;         
+  color: #aaa;
+  border-top: 1px solid #333;
+  background-color: #1a1a1a;
+  border-radius: 4px;        
+}
+
+.appFooter a {
+  color: #773274;            
+  font-size: inherit;
+}
+.appFooter a:hover {
+  text-decoration: underline;
+}

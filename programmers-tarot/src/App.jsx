@@ -1,16 +1,17 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { useState } from 'react'
-import NavBar from './components/NavBar/NavBar.jsx'
 import './App.css'
 import DrawCard from './components/DrawCard/DrawCard.jsx';
+import Footer from './components/Footer/Footer.jsx';
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
-      <NavBar />  
+    <div style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
       <DrawCard />
+      <Footer />
+      </div>
       
     </>
   )

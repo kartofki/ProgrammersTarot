@@ -87,3 +87,127 @@
     flex-direction: column;
     gap: 10px;
   }
+
+ .cardP{
+  font-size: 1rem;
+ }
+
+ .cardTitle{
+  color: black;
+  display: inline-block;
+ }
+
+ .cardName {
+  color: rgb(119, 50, 116);
+  padding-bottom: 20px;
+  font-family: 'Segoe UI', 'Arial', sans-serif;
+  font-size: 1.6rem;
+  font-weight: bold;
+  letter-spacing: 1.2px;
+  margin-bottom: 1em;
+  margin-top: 0.1em;
+  transition: box-shadow 0.2s;
+}
+
+.cardDescriptionWrapper {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.descriptionLabel {
+  color: rgb(119, 50, 116);
+  font-weight: bold;
+  font-size: 1.1em;
+  display: block;
+  margin-bottom: 6px;
+  letter-spacing: 0.7px;
+}
+
+.cardDescription {
+  width: 550px;
+  height: 300px;
+  display: inline-block;
+  background: linear-gradient(90deg, #f3e8fa 0%, #fff 100%);
+  border-left: 4px solid rgb(119, 50, 116);
+  border-radius: 8px;
+  padding: 12px 18px;
+  color: #3e2040;
+  font-size: 1.13rem;
+  font-family: 'Segoe UI', 'Arial', sans-serif;
+  box-shadow: 0 1.5px 8px rgba(119, 50, 116, 0.08);
+  margin-bottom: 10px;
+  margin-top: 3px;
+  word-break: break-word;
+  transition: box-shadow 0.18s;
+}
+
+.cardDescription:hover {
+  box-shadow: 0 4px 16px rgba(119, 50, 116, 0.16);
+  background: linear-gradient(90deg, #f3e8fa 0%, #f9f6ff 100%);
+}
+
+.placeholder{
+  width: 550px;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+   background: linear-gradient(90deg, #f3e8fa 0%, #fff 100%);
+  border-left: 4px solid rgb(119, 50, 116);
+  border-radius: 8px;
+  padding: 12px 18px;
+  color: #3e2040;
+  font-size: 1.13rem;
+  font-family: 'Segoe UI', 'Arial', sans-serif;
+  box-shadow: 0 1.5px 8px rgba(119, 50, 116, 0.08);
+  margin-bottom: 10px;
+  margin-top: 3px;
+  word-break: break-word;
+  transition: box-shadow 0.18s;
+  overflow-y: auto;
+}
+
+.placeholder h2{
+  color: rgb(119, 50, 116)
+}
+
+.hrSolid {
+  border: none;
+  border-top: 1px solid #bbb;
+  height: 0;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+button {
+  padding: 5px 10px;
+  width: 200px;
+  border-radius: 8px;
+  border: none;
+  background: rgb(119, 50, 116);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 8px rgba(119, 50, 116, 0.10);
+  cursor: pointer;
+  transition: 
+    background 0.18s,
+    transform 0.09s,
+    box-shadow 0.18s;
+  outline: none;
+}
+
+button:hover,
+button:hover {
+  background: rgb(145, 65, 140);
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 4px 18px rgba(119, 50, 116, 0.14);
+}
+
+button:active {
+  background: rgb(97, 36, 97);
+  transform: translateY(1px) scale(0.98);
+}
