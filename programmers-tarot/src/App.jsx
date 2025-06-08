@@ -8,7 +8,7 @@ function App() {
 
   return (
     <>
-    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems:'center', justifyContent: 'center' }}>
       <DrawCard />
       <Footer />
       </div>
