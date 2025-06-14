@@ -65,7 +65,9 @@
     75% {
         transform: rotateY(270deg);
       }
-    100% {
+    95% {
+      transform: rotateY(330deg);
+    }100% {
       transform: rotateY(360deg);
     }
   }
