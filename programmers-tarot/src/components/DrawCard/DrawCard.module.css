@@ -53,7 +53,7 @@
   
   
   @keyframes flipAnimation {
-    12% {
+    12.5% {
         transform: rotateY(45deg);
       }
     25% {
@@ -62,7 +62,7 @@
     50% {
       transform: rotateY(180deg);
     }
-    50% {
+    75% {
         transform: rotateY(270deg);
       }
     100% {
