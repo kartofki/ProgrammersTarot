@@ -53,24 +53,15 @@
   
   
   @keyframes flipAnimation {
-    12.5% {
-        transform: rotateY(45deg);
-      }
-    25% {
-        transform: rotateY(90deg);
-      }
-    50% {
-      transform: rotateY(180deg);
-    }
-    75% {
-        transform: rotateY(270deg);
-      }
-    95% {
-      transform: rotateY(330deg);
-    }100% {
-      transform: rotateY(360deg);
-    }
-  }
+     12.5% { transform: rotateY(45deg); }
+  25% { transform: rotateY(90deg); }
+  50% { transform: rotateY(180deg); }
+  75% { transform: rotateY(270deg); }
+  85% { transform: rotateY(300deg); }
+  92% { transform: rotateY(330deg); }
+  96% { transform: rotateY(345deg); }
+  100% { transform: rotateY(360deg); }
+}
   
   .cardImg {
     width: 100%;
