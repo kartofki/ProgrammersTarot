@@ -4,46 +4,41 @@ import { tarotCards } from './tarotCards';
 
 const DrawCard = () => {
   const [currentCard, setCurrentCard] = useState(null);
+  const [nextCard, setNextCard] = useState(null);
   const [isFlipping, setIsFlipping] = useState(false);
 
   const handleDrawCard = () => {
-    // generate a new card
+    // Generate a new card
     const randomCardIndex = Math.floor(Math.random() * tarotCards.length);
     const card = tarotCards[randomCardIndex];
     const randomDescriptionIndex = Math.floor(Math.random() * card.descriptions.length);
     const randomDescription = card.descriptions[randomDescriptionIndex];
     const newCard = { ...card, description: randomDescription };
 
+    // Set the next card (for the back face)
+    setNextCard(newCard);
     setIsFlipping(true);
 
     setTimeout(() => {
-      // update card after half the animation
       setCurrentCard(newCard);
-    }, 300); // 
-
-    setTimeout(() => {
-      // full animation
+      setNextCard(null);
       setIsFlipping(false);
     }, 600); 
   };
 
-  // handle card reset (flip back to face down)
   const handleResetCard = () => {
+    setNextCard(null); 
     setIsFlipping(true);
+    
     setTimeout(() => {
-      // clear card after half the animation
       setCurrentCard(null);
-    }, 300);
-
-    setTimeout(() => {
-      // full animation
       setIsFlipping(false);
     }, 600);
   };
 
   return (
     <div className={styles.drawCardContainer}>
-        {/* Heading */}
+      {/* Heading */}
       <h2>Draw A Card</h2>
       <p>
         🔮 Welcome to Programmer's Tarot, where coding meets the ancient cosmic wisdom of Tarot! 🔮
@@ -56,65 +51,76 @@ const DrawCard = () => {
       </p>
       <hr className={styles.hrSolid}></hr>
       <div className={styles.cardAndDescription}>
-      {/* Card And Button Container */}
-      <div className={styles.cardAndButton}>
-      <div className={styles.flipCard}>
-        <div className={`${styles.flipCardInner} ${isFlipping ? styles.isFlipping : ''}`}>
-          {/* Card Face */}
-          <div className={styles.flipCardFront}>
-            <img
-              className={styles.cardImg}
-              src={currentCard ? currentCard.image : '/Cards-png/borderedback.png'}
-            />
+        {/* Card And Button Container */}
+        <div className={styles.cardAndButton}>
+          <div className={styles.flipCard}>
+            <div className={`${styles.flipCardInner} ${isFlipping ? styles.isFlipping : ''}`}>
+              {/* Card Front */}
+              <div className={styles.flipCardFront}>
+                <img
+                  className={styles.cardImg}
+                  src={currentCard ? currentCard.image : '/Cards-png/borderedback.png'}
+                  alt="Card front"
+                />
+              </div>
+              {/* Card Back */}
+              <div className={styles.flipCardBack}>
+                <img
+                  className={styles.cardImg}
+                  src={nextCard ? nextCard.image : '/Cards-png/borderedback.png'}
+                  alt="Card back"
+                />
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
 
-      <button className={styles.button} onClick={handleDrawCard}>
-        {currentCard ? 'Draw New Card' : 'Draw a Card'}
-      </button>
-      {/* Reset button */}
-       {currentCard ? (
-    <button 
-      onClick={handleResetCard}
-      type="button"
-      className={styles.button}
-    >
-      Reset
-    </button>
-  ) : (
-    // Invisible placeholder
-    <button 
-      type="button"
-      className={styles.button}
-      style={{ visibility: 'hidden' }}
-      tabIndex={-1}
-      aria-hidden="true"
-    >
-      Reset
-    </button>
-  )}
-</div>
-      {currentCard ? (
-  <div className={styles.cardDisplay}>
-    
-    <div className={styles.cardDescriptionWrapper}>
-      
-      <div className={styles.cardDescription}><h2></h2><h2 className={styles.cardName}>
-  <span style={{ color: "#333", fontWeight: "normal" }}>Your Card:</span> {currentCard.name}
-</h2>
-    <span style={{ color: "#333", fontWeight: "normal" }}>Description:</span> {currentCard.description}</div>
-    </div>
-  </div>
-) : (
-  <div className={styles.cardDisplay}>
-    <div className={styles.placeholder}>
-    <h2>Press the button to draw a card </h2>
-    </div>
-  </div>
-)}
-    </div>
-    <hr className={styles.hrSolid}></hr>
+          <button className={styles.button} onClick={handleDrawCard}>
+            {currentCard ? 'Draw New Card' : 'Draw a Card'}
+          </button>
+          
+          {/* Reset button */}
+          {currentCard ? (
+            <button 
+              onClick={handleResetCard}
+              type="button"
+              className={styles.button}
+            >
+              Reset
+            </button>
+          ) : (
+            <button 
+              type="button"
+              className={styles.button}
+              style={{ visibility: 'hidden' }}
+              tabIndex={-1}
+              aria-hidden="true"
+            >
+              Reset
+            </button>
+          )}
+        </div>
+
+        {currentCard ? (
+          <div className={styles.cardDisplay}>
+            <div className={styles.cardDescriptionWrapper}>
+              <div className={styles.cardDescription}>
+                <h2></h2>
+                <h2 className={styles.cardName}>
+                  <span style={{ color: "#333", fontWeight: "normal" }}>Your Card:</span> {currentCard.name}
+                </h2>
+                <span style={{ color: "#333", fontWeight: "normal" }}>Description:</span> {currentCard.description}
+              </div>
+            </div>
+          </div>
+        ) : (
+          <div className={styles.cardDisplay}>
+            <div className={styles.placeholder}>
+              <h2>Press the button to draw a card</h2>
+            </div>
+          </div>
+        )}
+      </div>
+      <hr className={styles.hrSolid}></hr>
     </div>
   );
 };
